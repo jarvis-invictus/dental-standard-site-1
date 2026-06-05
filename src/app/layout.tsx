@@ -23,14 +23,104 @@ const poppins = Poppins({
 });
 
 export const metadata: Metadata = {
-  title: 'Premium Dental Care | Modern Dental Clinic',
+  metadataBase: new URL('https://smiledentalclinic.in'),
+  title: 'Smile Dental Clinic - Premium Dentist in Aundh, Pune',
   description:
-    'Advanced, patient-first dental care with a focus on comfort, technology, and lasting smiles. Book your appointment today.',
+    'Experience painless root canals, teeth alignment, cosmetic dentistry, and dental implants at Smile Dental Clinic, Aundh, Pune. Schedule your consultation today!',
   icons: {
     icon: '/favicon.svg',
     shortcut: '/favicon.svg',
     apple: '/favicon.svg',
   },
+  alternates: {
+    canonical: '/',
+  },
+  openGraph: {
+    title: 'Smile Dental Clinic - Premium Dentist in Aundh, Pune',
+    description:
+      'Experience painless root canals, teeth alignment, cosmetic dentistry, and dental implants at Smile Dental Clinic, Aundh, Pune. Schedule your consultation today!',
+    url: 'https://smiledentalclinic.in',
+    siteName: 'Smile Dental Clinic',
+    locale: 'en_IN',
+    type: 'website',
+    images: [
+      {
+        url: '/assets/images/hero-banner.png',
+        width: 1200,
+        height: 630,
+        alt: 'Smile Dental Clinic - Premium Dental Care Pune',
+      },
+    ],
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
+};
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Dentist',
+  '@id': 'https://smiledentalclinic.in/#dentist',
+  name: 'Smile Dental Clinic',
+  url: 'https://smiledentalclinic.in',
+  logo: 'https://smiledentalclinic.in/favicon.svg',
+  image: 'https://smiledentalclinic.in/assets/images/hero-banner.png',
+  description:
+    "Premium Dental Care for Your Family's Smile in Aundh, Pune. Painless root canals, teeth alignment, and dental implants by Pune's leading specialists.",
+  telephone: '+919699577641',
+  email: 'contact@smiledentalclinic.in',
+  priceRange: '$$',
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: '123, ITI Road, Near Bata Showroom, Aundh',
+    addressLocality: 'Pune',
+    addressRegion: 'Maharashtra',
+    postalCode: '411007',
+    addressCountry: 'IN',
+  },
+  geo: {
+    '@type': 'GeoCoordinates',
+    latitude: '18.5602',
+    longitude: '73.8031',
+  },
+  openingHoursSpecification: [
+    {
+      '@type': 'OpeningHoursSpecification',
+      dayOfWeek: [
+        'Monday',
+        'Tuesday',
+        'Wednesday',
+        'Thursday',
+        'Friday',
+        'Saturday',
+        'Sunday',
+      ],
+      opens: '10:00',
+      closes: '20:00',
+    },
+  ],
+  sameAs: [
+    'https://www.facebook.com/yourclinic',
+    'https://www.instagram.com/yourclinic',
+    'https://twitter.com/yourclinic',
+  ],
+  knowsAbout: [
+    'Root Canal Therapy',
+    'Teeth Alignment',
+    'Cosmetic Dentistry',
+    'Preventive Care',
+    'Dental Consultation',
+    'Cavity Detection',
+    'Dental Implants',
+  ],
 };
 
 export default function RootLayout({
@@ -40,6 +130,12 @@ export default function RootLayout({
 }): ReactElement {
   return (
     <html lang="en" className={`${roboto.variable} ${poppins.variable}`}>
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+      </head>
       <body suppressHydrationWarning>
         <Header />
         {children}
