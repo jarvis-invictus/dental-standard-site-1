@@ -15,34 +15,33 @@ import {
   IoMenuSharp,
 } from 'react-icons/io5';
 
-import { useAppointmentModal } from '@/contexts/AppointmentModalContext';
+import { WhatsAppButton } from '@/components/common/WhatsAppButton';
 
 const NAV_LINKS = [
-  { label: 'Home', href: '/' },
+  { label: 'Home', href: '#home' },
   { label: 'Services', href: '#service' },
-  { label: 'About Us', href: '#about' },
-  { label: 'Blog', href: '#blog' },
-  { label: 'Contact', href: '/contact' },
+  { label: 'About', href: '#about' },
+  { label: 'Find Us', href: '#location' },
 ] as const;
 
 const SOCIAL_LINKS = [
   {
-    href: 'https://www.facebook.com/TDental',
+    href: 'https://www.facebook.com/yourclinic',
     label: 'Facebook',
     icon: <IoLogoFacebook />,
   },
   {
-    href: 'https://www.instagram.com/TDental',
+    href: 'https://www.instagram.com/yourclinic',
     label: 'Instagram',
     icon: <IoLogoInstagram />,
   },
   {
-    href: 'https://twitter.com/TDental',
+    href: 'https://twitter.com/yourclinic',
     label: 'Twitter',
     icon: <IoLogoTwitter />,
   },
   {
-    href: 'https://www.youtube.com/@TDental',
+    href: 'https://www.youtube.com/@yourclinic',
     label: 'YouTube',
     icon: <IoLogoYoutube />,
   },
@@ -50,7 +49,6 @@ const SOCIAL_LINKS = [
 
 export function Header(): ReactElement {
   const pathname = usePathname();
-  const { open } = useAppointmentModal();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isSticky, setIsSticky] = useState(false);
 
@@ -86,19 +84,22 @@ export function Header(): ReactElement {
           <ul className="contact-list">
             <li className="contact-item">
               <IoMailOutline aria-hidden="true" color="hsl(225, 68%, 53%)" />
-              <a href="mailto:info@TDental.com" className="contact-link">
-                info@TDental.com
+              <a
+                href="mailto:contact@smiledentalclinic.in"
+                className="contact-link"
+              >
+                contact@smiledentalclinic.in
               </a>
             </li>
             <li className="contact-item">
               <IoCallOutline aria-hidden="true" color="hsl(225, 68%, 53%)" />
-              <a href="tel:+917052101786" className="contact-link">
-                +91-7052-101-786
+              <a href="tel:+919699577641" className="contact-link">
+                +91 96995 77641
               </a>
             </li>
           </ul>
 
-          <ul className="social-list" aria-label="Follow TDental">
+          <ul className="social-list" aria-label="Follow us on social media">
             {SOCIAL_LINKS.map(social => (
               <li key={social.href}>
                 <a
@@ -118,8 +119,8 @@ export function Header(): ReactElement {
 
       <div className={headerBottomClassName} data-header>
         <div className="container">
-          <Link href="/" className="logo" aria-label="TDental Home">
-            TDental.
+          <Link href="/" className="logo" aria-label="Smile Dental Clinic Home">
+            Smile Dental Clinic
           </Link>
 
           <nav
@@ -128,10 +129,7 @@ export function Header(): ReactElement {
           >
             <ul className="navbar-list">
               {NAV_LINKS.map(nav => {
-                const isActive =
-                  nav.href === '/'
-                    ? pathname === nav.href
-                    : pathname.startsWith(nav.href);
+                const isActive = false; // Single page app
 
                 return (
                   <li key={nav.href}>
@@ -148,9 +146,9 @@ export function Header(): ReactElement {
             </ul>
           </nav>
 
-          <button type="button" className="btn" onClick={open}>
+          <WhatsAppButton variant="primary" className="header-cta-btn">
             Book appointment
-          </button>
+          </WhatsAppButton>
 
           <button
             className={`nav-toggle-btn${isMenuOpen ? ' active' : ''}`}

@@ -1,0 +1,55 @@
+@use '../variables' as *;
+@use '../mixins' as *;
+
+.location {
+  background-color: $cultured;
+
+  .container {
+    display: grid;
+    gap: 50px;
+    align-items: center;
+
+    @include tablet-up {
+      grid-template-columns: 1fr 1.2fr;
+    }
+  }
+
+  .location-content {
+    .section-text {
+      margin-block-end: 25px;
+    }
+  }
+
+  .contact-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+
+    li {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      font-size: 1.6rem;
+
+      .icon {
+        font-size: 24px;
+        color: $royal-blue-light;
+        flex-shrink: 0;
+      }
+    }
+  }
+
+  .location-map {
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: $shadow-4;
+    height: 350px;
+    width: 100%;
+
+    iframe {
+      border: 0;
+      width: 100%;
+      height: 100%;
+    }
+  }
+}

@@ -41,7 +41,7 @@ export const services: Service[] = [
   },
   {
     id: 'alignment',
-    title: 'Personalized Alignment',
+    title: 'Teeth Alignment',
     description:
       'Modern aligners and braces that straighten smiles with fewer visits and faster results.',
     icon: '/assets/images/service-icon-2.png',
@@ -49,7 +49,7 @@ export const services: Service[] = [
   },
   {
     id: 'cosmetic',
-    title: 'Cosmetic Enhancements',
+    title: 'Cosmetic Dentistry',
     description:
       'Whitening, veneers, and contouring designed to match your facial features and goals.',
     icon: '/assets/images/service-icon-3.png',
@@ -57,7 +57,7 @@ export const services: Service[] = [
   },
   {
     id: 'oral-hygiene',
-    title: 'Preventive Hygiene',
+    title: 'Preventive Care',
     description:
       'Comfort-first cleanings, fluoride, and sealants to keep your family smiling year-round.',
     icon: '/assets/images/service-icon-4.png',
@@ -65,9 +65,9 @@ export const services: Service[] = [
   },
   {
     id: 'advisory',
-    title: 'Live Dental Advisory',
+    title: 'Dental Consultation',
     description:
-      'Chat with clinicians for real-time care plans, insurance guidance, and emergency triage.',
+      'Expert consultations for personalized care plans, insurance guidance, and emergency triage.',
     icon: '/assets/images/service-icon-5.png',
     href: '/services#service-advisory',
   },
@@ -83,51 +83,15 @@ export const services: Service[] = [
 
 export const doctors: Doctor[] = [
   {
-    id: 'howard-holmes',
-    name: 'Dr. Howard Holmes',
-    role: 'Prosthodontist',
+    id: 'dr-sharma',
+    name: 'Dr. Rahul Sharma',
+    role: 'Principal Dentist & Implantologist',
     image: '/assets/images/doctor-1.png',
-    profileHref: '/about#team-howard',
+    profileHref: '#doctor',
     socials: [
-      { network: 'facebook', href: 'https://www.facebook.com/TDental' },
-      { network: 'twitter', href: 'https://twitter.com/TDental' },
-      { network: 'instagram', href: 'https://www.instagram.com/TDental' },
-    ],
-  },
-  {
-    id: 'ella-thompson',
-    name: 'Dr. Ella Thompson',
-    role: 'Orthodontist',
-    image: '/assets/images/doctor-2.png',
-    profileHref: '/about#team-ella',
-    socials: [
-      { network: 'facebook', href: 'https://www.facebook.com/TDental' },
-      { network: 'twitter', href: 'https://twitter.com/TDental' },
-      { network: 'instagram', href: 'https://www.instagram.com/TDental' },
-    ],
-  },
-  {
-    id: 'vincent-cooper',
-    name: 'Dr. Vincent Cooper',
-    role: 'Cosmetic Dentist',
-    image: '/assets/images/doctor-3.png',
-    profileHref: '/about#team-vincent',
-    socials: [
-      { network: 'facebook', href: 'https://www.facebook.com/TDental' },
-      { network: 'twitter', href: 'https://twitter.com/TDental' },
-      { network: 'instagram', href: 'https://www.instagram.com/TDental' },
-    ],
-  },
-  {
-    id: 'danielle-bryant',
-    name: 'Dr. Danielle Bryant',
-    role: 'Pediatric Specialist',
-    image: '/assets/images/doctor-4.png',
-    profileHref: '/about#team-danielle',
-    socials: [
-      { network: 'facebook', href: 'https://www.facebook.com/TDental' },
-      { network: 'twitter', href: 'https://twitter.com/TDental' },
-      { network: 'instagram', href: 'https://www.instagram.com/TDental' },
+      { network: 'facebook', href: 'https://www.facebook.com/yourclinic' },
+      { network: 'twitter', href: 'https://twitter.com/yourclinic' },
+      { network: 'instagram', href: 'https://www.instagram.com/yourclinic' },
     ],
   },
 ];
@@ -164,3 +128,98 @@ export const blogPosts: BlogPost[] = [
     href: '/blog#post-3',
   },
 ];
+
+export type TreatmentDetail = {
+  serviceId: string;
+  detailedDescription: string;
+  duration: string;
+  benefits: string[];
+  idealFor: string;
+};
+
+export const treatmentDetails: Record<string, TreatmentDetail> = {
+  'root-canal': {
+    serviceId: 'root-canal',
+    detailedDescription:
+      'Root Canal Therapy is a highly effective treatment designed to repair and save a tooth that is badly decayed or becomes infected. Our modern techniques ensure a completely painless procedure, helping you save your natural teeth.',
+    duration: '1 - 2 Visits (approx. 45 mins each)',
+    benefits: [
+      'Relieves severe tooth pain and sensitivity',
+      'Prevents the spread of infection to other teeth',
+      'Restores natural chewing and biting efficiency',
+      'Maintains the alignment of your jawline',
+    ],
+    idealFor:
+      'Patients experiencing sharp tooth pain, sensitivity to hot and cold, swelling around the gums, or deep tooth decay.',
+  },
+  alignment: {
+    serviceId: 'alignment',
+    detailedDescription:
+      'Achieve your dream smile with our state-of-the-art Teeth Alignment options. We offer both traditional orthodontics and premium Clear Aligners (invisible braces) that are custom-molded to guide your teeth into place comfortably and discreetly.',
+    duration: '6 - 18 Months (based on complexity)',
+    benefits: [
+      'Discreet treatment with near-invisible clear aligners',
+      'Easier oral hygiene compared to metal braces',
+      'Corrects overbites, underbites, crowding, and gaps',
+      'Boosts self-confidence and improves speech',
+    ],
+    idealFor:
+      'Adults and teenagers looking to align their teeth comfortably without the aesthetic and lifestyle restrictions of metal braces.',
+  },
+  cosmetic: {
+    serviceId: 'cosmetic',
+    detailedDescription:
+      'Transform the appearance of your teeth with our customized Cosmetic Dentistry services. From instant professional teeth whitening to custom porcelain veneers and contouring, we design custom smile makeovers to bring out your best features.',
+    duration: '1 Visit (Whitening) / 2-3 Visits (Veneers)',
+    benefits: [
+      'Instantly brightens discolored or stained teeth',
+      'Hides chips, cracks, or gaps with porcelain veneers',
+      'Custom shades that perfectly match your facial aesthetics',
+      'Long-lasting, stain-resistant, and natural-looking results',
+    ],
+    idealFor:
+      'Anyone looking to repair dental imperfections, brighten their smile, or redesign the shape and color of their teeth.',
+  },
+  'oral-hygiene': {
+    serviceId: 'oral-hygiene',
+    detailedDescription:
+      'Preventive dental care is the foundation of long-term oral health. Our premium care packages include deep cleaning (scaling and polishing), advanced cavity mapping, enamel-strengthening fluoride treatments, and dental sealants to protect your family’s teeth.',
+    duration: '1 Visit (approx. 30 - 45 mins)',
+    benefits: [
+      'Removes plaque, tartar, and surface stains',
+      'Prevents gum disease, bad breath, and future tooth decay',
+      'Enamel strengthening to protect against sensitivity',
+      'Early detection of potential dental issues',
+    ],
+    idealFor:
+      'Individuals and families looking to maintain optimal oral health. Highly recommended twice a year.',
+  },
+  advisory: {
+    serviceId: 'advisory',
+    detailedDescription:
+      'A thorough dental examination is the starting point for any treatment plan. Get detailed diagnostic reports, personalized care strategies, dental mapping, transparent budget estimates, and emergency dental triage with our experts.',
+    duration: '1 Visit (approx. 20 - 30 mins)',
+    benefits: [
+      'Comprehensive diagnosis with state-of-the-art scanners',
+      'Clear explanation of treatment options and budgets',
+      'Early screening for oral health conditions',
+      'Emergency consultation & immediate pain management plans',
+    ],
+    idealFor:
+      'New patients looking for general checks, second opinions, or custom long-term dental health advice.',
+  },
+  cavity: {
+    serviceId: 'cavity',
+    detailedDescription:
+      'Our advanced Cavity Detection systems use laser diagnostics and digital imagery to identify hidden decay between teeth and under existing fillings long before they are visible on X-rays, ensuring minimally invasive treatments.',
+    duration: '1 Visit (approx. 15 mins)',
+    benefits: [
+      'Pinpoints decay in its absolute earliest stages',
+      'Allows for micro-fillings, preserving more natural tooth structure',
+      'Painless, radiation-free diagnostic technology',
+      'Helps avoid root canals by treating cavities early',
+    ],
+    idealFor:
+      'Patients of all ages who want to proactively map their tooth health and treat cavities early and painlessly.',
+  },
+};

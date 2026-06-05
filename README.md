@@ -1,6 +1,15 @@
-# TDental Dental Clinic – Next.js Rebuild
+# DentalCare Pro - Next.js Dental Clinic Template
 
-Modernized version of the TDental clinic marketing site, migrated from static HTML to **Next.js 14** with **TypeScript** and **SCSS**. The App Router, data-driven components, and reusable design system keep content easy to maintain while preserving the original brand look and feel.
+A premium, production-ready dental clinic website template built with **Next.js 14**, **TypeScript**, and **SCSS**. Features a modern App Router architecture, data-driven components, and a reusable design system for easy customization.
+
+## 🎯 Perfect For
+
+- Dental clinics launching their online presence
+- Web developers selling to dental professionals  
+- Healthcare startups needing a professional foundation
+- Freelancers building client sites quickly
+
+## 🚀 What's Included
 
 ## 🚀 What’s Shipped
 

@@ -1,7 +1,7 @@
 import type { IConfig } from 'next-sitemap';
 
 const config: IConfig = {
-  siteUrl: process.env.NEXT_PUBLIC_SITE_URL || 'https://tdental.com',
+  siteUrl: process.env.NEXT_PUBLIC_SITE_URL || 'https://smiledentalclinic.in',
   generateRobotsTxt: true,
   generateIndexSitemap: false,
   exclude: ['/api/*', '/admin/*'],
@@ -14,7 +14,7 @@ const config: IConfig = {
       },
     ],
     additionalSitemaps: [
-      `${process.env.NEXT_PUBLIC_SITE_URL || 'https://tdental.com'}/sitemap.xml`,
+      `${process.env.NEXT_PUBLIC_SITE_URL || 'https://smiledentalclinic.in'}/sitemap.xml`,
     ],
   },
   transform: async (config, path) => {

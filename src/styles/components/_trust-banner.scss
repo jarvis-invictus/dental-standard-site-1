@@ -1,0 +1,68 @@
+@use '../variables' as *;
+@use '../mixins' as *;
+
+.avatar-root {
+  position: relative;
+  display: flex;
+  height: 32px;
+  width: 32px;
+  flex-shrink: 0;
+  overflow: hidden;
+  border-radius: 50%;
+}
+
+.avatar-image {
+  aspect-ratio: 1 / 1;
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+
+.avatar-fallback {
+  display: flex;
+  height: 100%;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  border-radius: inherit;
+  background-color: $light-gray;
+  color: $sonic-silver;
+  font-size: 1.2rem;
+}
+
+.trust-banner {
+  display: inline-flex;
+  align-items: center;
+  border-radius: 9999px;
+  border: 1px solid $light-gray;
+  background-color: $white;
+  padding: 6px 14px 6px 6px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.04);
+  margin-block-end: 25px;
+
+  .avatar-group {
+    display: flex;
+
+    .avatar-item {
+      margin-inline-end: -8px;
+      border: 2px solid $white;
+      box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.05);
+
+      &:last-child {
+        margin-inline-end: 0;
+      }
+    }
+  }
+
+  .trust-text {
+    padding-inline-start: 16px;
+    font-size: 1.3rem;
+    color: $sonic-silver;
+    font-family: $ff-roboto;
+
+    .trust-count {
+      font-weight: $fw-600;
+      color: $oxford-blue-1;
+    }
+  }
+}

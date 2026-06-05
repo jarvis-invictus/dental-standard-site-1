@@ -1,7 +1,6 @@
 import Link from 'next/link';
 import type { ReactElement } from 'react';
 import {
-  IoAddOutline,
   IoCallOutline,
   IoLocationOutline,
   IoLogoFacebook,
@@ -11,37 +10,19 @@ import {
   IoTimeOutline,
 } from 'react-icons/io5';
 
-const quickLinks = [
-  { label: 'Home', href: '/' },
-  { label: 'About Us', href: '/#about' },
-  { label: 'Services', href: '/#service' },
-  { label: 'Patient Stories', href: '/services#case-studies' },
-  { label: 'Our Team', href: '/#team' },
-  { label: 'Latest Blog', href: '/#blog' },
-] as const;
-
-const servicesLinks = [
-  { label: 'Root Canal', href: '/services#service-root-canal' },
-  { label: 'Alignment Teeth', href: '/services#service-alignment' },
-  { label: 'Cosmetic Teeth', href: '/services#service-cosmetic' },
-  { label: 'Oral Hygiene', href: '/services#service-hygiene' },
-  { label: 'Live Advisory', href: '/services#service-advisory' },
-  { label: 'Cavity Inspection', href: '/services#service-cavity' },
-] as const;
-
 const socialLinks = [
   {
-    href: 'https://www.facebook.com/TDental',
+    href: 'https://www.facebook.com/yourclinic',
     label: 'Facebook',
     icon: <IoLogoFacebook />,
   },
   {
-    href: 'https://www.instagram.com/TDental',
+    href: 'https://www.instagram.com/yourclinic',
     label: 'Instagram',
     icon: <IoLogoInstagram />,
   },
   {
-    href: 'https://twitter.com/TDental',
+    href: 'https://twitter.com/yourclinic',
     label: 'Twitter',
     icon: <IoLogoTwitter />,
   },
@@ -54,13 +35,13 @@ export function Footer(): ReactElement {
         <div className="container">
           <div className="footer-brand">
             <Link href="/" className="logo">
-              TDental.
+              Smile Dental Clinic
             </Link>
 
             <p className="footer-text">
-              Mauris non nisi semper, lacinia neque in, dapibus leo. Curabitur
-              sagittis libero tincidunt tempor finibus. Mauris at dignissim
-              ligula, nec tristique orci. Quisque vitae metus.
+              Premium dental care in Aundh, Pune. We combine advanced technology
+              with compassionate care to give you the perfect smile. Book your
+              appointment on WhatsApp for a healthier, brighter smile today.
             </p>
 
             <div className="schedule">
@@ -68,40 +49,12 @@ export function Footer(): ReactElement {
                 <IoTimeOutline aria-hidden="true" />
               </span>
               <span className="span">
-                Monday - Saturday:
+                Monday - Sunday:
                 <br />
-                9:00am - 10:00pm
+                10:00 AM - 8:00 PM
               </span>
             </div>
           </div>
-
-          <ul className="footer-list">
-            <li>
-              <p className="footer-list-title">Other Links</p>
-            </li>
-            {quickLinks.map(item => (
-              <li key={item.href}>
-                <Link href={item.href} className="footer-link">
-                  <IoAddOutline aria-hidden="true" />
-                  <span className="span">{item.label}</span>
-                </Link>
-              </li>
-            ))}
-          </ul>
-
-          <ul className="footer-list">
-            <li>
-              <p className="footer-list-title">Our Services</p>
-            </li>
-            {servicesLinks.map(item => (
-              <li key={item.href}>
-                <Link href={item.href} className="footer-link">
-                  <IoAddOutline aria-hidden="true" />
-                  <span className="span">{item.label}</span>
-                </Link>
-              </li>
-            ))}
-          </ul>
 
           <ul className="footer-list">
             <li>
@@ -112,25 +65,28 @@ export function Footer(): ReactElement {
                 <IoLocationOutline aria-hidden="true" />
               </span>
               <address className="item-text">
-                1247/Plot No. 39, 15th Phase,
+                123, ITI Road, Near Bata Showroom
                 <br />
-                LHB Colony, Kanpur
+                Aundh, Pune - 411007, Maharashtra
               </address>
             </li>
             <li className="footer-item">
               <span className="item-icon">
                 <IoCallOutline aria-hidden="true" />
               </span>
-              <a href="tel:+917052101786" className="footer-link">
-                +91-7052-101-786
+              <a href="tel:+919699577641" className="footer-link">
+                +91 96995 77641
               </a>
             </li>
             <li className="footer-item">
               <span className="item-icon">
                 <IoMailOutline aria-hidden="true" />
               </span>
-              <a href="mailto:help@TDental.com" className="footer-link">
-                help@TDental.com
+              <a
+                href="mailto:contact@smiledentalclinic.in"
+                className="footer-link"
+              >
+                contact@smiledentalclinic.in
               </a>
             </li>
           </ul>
@@ -140,9 +96,22 @@ export function Footer(): ReactElement {
       <div className="footer-bottom">
         <div className="container">
           <p className="copyright">
-            &copy; {new Date().getFullYear()} TDental. All Rights Reserved by
-            koolmaster.
+            &copy; {new Date().getFullYear()} Smile Dental Clinic. All Rights
+            Reserved.
           </p>
+
+          <ul className="legal-links">
+            <li>
+              <Link href="/privacy" className="legal-link">
+                Privacy Policy
+              </Link>
+            </li>
+            <li>
+              <Link href="/terms" className="legal-link">
+                Terms of Service
+              </Link>
+            </li>
+          </ul>
 
           <ul className="social-list">
             {socialLinks.map(item => (

@@ -1,16 +1,23 @@
+'use client';
+
 import Image from 'next/image';
 import Link from 'next/link';
 import type { CSSProperties, ReactElement } from 'react';
+import { useState } from 'react';
 import {
+  IoCallOutline,
+  IoLocationOutline,
   IoLogoFacebook,
   IoLogoInstagram,
   IoLogoTwitter,
+  IoMailOutline,
 } from 'react-icons/io5';
 
-import { BookAppointmentButton } from '@/components/common/BookAppointmentButton';
-import { HeroCallBackForm } from '@/components/sections/home/HeroCallBackForm';
-import type { DoctorSocialNetwork } from '@/data/home';
-import { blogPosts, doctors, services } from '@/data/home';
+import { TreatmentModal } from '@/components/common/TreatmentModal';
+import { WhatsAppButton } from '@/components/common/WhatsAppButton';
+import { TrustBanner } from '@/components/sections/home/TrustBanner';
+import type { DoctorSocialNetwork, Service } from '@/data/home';
+import { doctors, services, treatmentDetails } from '@/data/home';
 
 const heroBackground: CSSProperties = {
   backgroundImage: "url('/assets/images/hero-bg.png')",
@@ -23,6 +30,8 @@ const socialIconMap: Record<DoctorSocialNetwork, ReactElement> = {
 };
 
 export default function HomePage(): ReactElement {
+  const [selectedService, setSelectedService] = useState<Service | null>(null);
+
   return (
     <main>
       <article>
@@ -34,15 +43,20 @@ export default function HomePage(): ReactElement {
         >
           <div className="container">
             <div className="hero-content">
-              <p className="section-subtitle">Welcome To TDental</p>
-              <h1 className="h1 hero-title">We Are Best Dental Service</h1>
+              <h1 className="h1 hero-title">
+                Premium Dental Care for Your Family&apos;s Smile
+              </h1>
               <p className="hero-text">
-                Experience empathetic care, advanced technology, and relaxing
-                suites that make every visit feel easy. From preventive checkups
-                to full-smile transformations, we tailor dentistry to your
-                lifestyle.
+                Experience advanced, painless dental treatments with Pune&apos;s
+                leading implantologist and cosmetic dentist. We blend modern
+                clinical technology with warm, personalized hospitality.
               </p>
-              <HeroCallBackForm />
+              <TrustBanner />
+              <div style={{ marginBlockStart: '10px' }}>
+                <WhatsAppButton variant="primary">
+                  Book Appointment
+                </WhatsAppButton>
+              </div>
             </div>
 
             <figure className="hero-banner">
@@ -52,6 +66,7 @@ export default function HomePage(): ReactElement {
                 height={839}
                 alt="Dentist smiling with patient"
                 className="w-100"
+                style={{ objectFit: 'cover' }}
                 priority
               />
             </figure>
@@ -67,7 +82,18 @@ export default function HomePage(): ReactElement {
             <ul className="service-list">
               {services.slice(0, 3).map(service => (
                 <li key={service.id}>
-                  <article className="service-card">
+                  <div
+                    className="service-card"
+                    role="button"
+                    tabIndex={0}
+                    onClick={() => setSelectedService(service)}
+                    onKeyDown={e => {
+                      if (e.key === 'Enter' || e.key === ' ') {
+                        setSelectedService(service);
+                      }
+                    }}
+                    style={{ cursor: 'pointer' }}
+                  >
                     <div className="card-icon">
                       <Image
                         src={service.icon}
@@ -81,7 +107,7 @@ export default function HomePage(): ReactElement {
                       <h3 className="h3 card-title">{service.title}</h3>
                       <p className="card-text">{service.description}</p>
                     </div>
-                  </article>
+                  </div>
                 </li>
               ))}
 
@@ -97,7 +123,18 @@ export default function HomePage(): ReactElement {
 
               {services.slice(3).map(service => (
                 <li key={service.id}>
-                  <article className="service-card">
+                  <div
+                    className="service-card"
+                    role="button"
+                    tabIndex={0}
+                    onClick={() => setSelectedService(service)}
+                    onKeyDown={e => {
+                      if (e.key === 'Enter' || e.key === ' ') {
+                        setSelectedService(service);
+                      }
+                    }}
+                    style={{ cursor: 'pointer' }}
+                  >
                     <div className="card-icon">
                       <Image
                         src={service.icon}
@@ -111,7 +148,7 @@ export default function HomePage(): ReactElement {
                       <h3 className="h3 card-title">{service.title}</h3>
                       <p className="card-text">{service.description}</p>
                     </div>
-                  </article>
+                  </div>
                 </li>
               ))}
             </ul>
@@ -131,7 +168,9 @@ export default function HomePage(): ReactElement {
             </figure>
 
             <div className="about-content">
-              <p className="section-subtitle">Why patients choose TDental</p>
+              <p className="section-subtitle">
+                Why patients choose Smile Dental Clinic
+              </p>
               <h2 className="h2 section-title">
                 Compassion meets clinical excellence
               </h2>
@@ -147,33 +186,40 @@ export default function HomePage(): ReactElement {
                 It’s why 9 in 10 new visitors are referrals from delighted
                 patients.
               </p>
-              <Link href="/about" className="btn">
+              <Link href="#doctor" className="btn">
                 Meet the team
               </Link>
             </div>
           </div>
         </section>
 
-        <section className="section doctor" aria-label="doctor">
+        <section className="section doctor" id="doctor" aria-label="doctor">
           <div className="container">
             <p className="section-subtitle text-center">Our Specialists</p>
             <h2 className="h2 section-title text-center">
               Dentists dedicated to lifelong smiles
             </h2>
-            <ul className="has-scrollbar">
+            <ul className="has-scrollbar" style={{ justifyContent: 'center' }}>
               {doctors.map(doctor => (
-                <li className="scrollbar-item" key={doctor.id}>
-                  <article className="doctor-card">
+                <li
+                  className="scrollbar-item"
+                  key={doctor.id}
+                  style={{ minWidth: 'auto', flex: '0 1 380px' }}
+                >
+                  <article
+                    className="doctor-card"
+                    style={{ maxWidth: '380px', margin: '0 auto' }}
+                  >
                     <div
                       className="card-banner img-holder"
                       style={
-                        { '--width': '460', '--height': '500' } as CSSProperties
+                        { '--width': '350', '--height': '350' } as CSSProperties
                       }
                     >
                       <Image
                         src={doctor.image}
-                        width={460}
-                        height={500}
+                        width={350}
+                        height={350}
                         alt={doctor.name}
                         className="img-cover"
                       />
@@ -215,6 +261,7 @@ export default function HomePage(): ReactElement {
                 height={1076}
                 alt="Dentist high-fiving a patient"
                 className="w-100"
+                style={{ objectFit: 'cover' }}
               />
             </figure>
 
@@ -223,64 +270,81 @@ export default function HomePage(): ReactElement {
               <h2 className="h2 section-title">
                 We’re welcoming new patients with complimentary smile consults
               </h2>
-              <BookAppointmentButton className="btn">
+              <WhatsAppButton variant="primary">
                 Book appointment
-              </BookAppointmentButton>
+              </WhatsAppButton>
             </div>
           </div>
         </section>
 
-        <section className="section blog" id="blog" aria-label="blog">
+        <section
+          className="section location"
+          id="location"
+          aria-label="location"
+        >
           <div className="container">
-            <p className="section-subtitle text-center">Our Blog</p>
-            <h2 className="h2 section-title text-center">
-              Latest insights & news
-            </h2>
-            <ul className="blog-list">
-              {blogPosts.map(post => (
-                <li key={post.id}>
-                  <article className="blog-card">
-                    <figure
-                      className="card-banner img-holder"
-                      style={
-                        {
-                          '--width': '1180',
-                          '--height': '800',
-                        } as CSSProperties
-                      }
-                    >
-                      <Image
-                        src={post.image}
-                        width={1180}
-                        height={800}
-                        alt={post.title}
-                        className="img-cover"
-                      />
-                      <div className="card-badge">
-                        <time className="time" dateTime={post.date}>
-                          {post.displayDate}
-                        </time>
-                      </div>
-                    </figure>
-
-                    <div className="card-content">
-                      <h3 className="h3">
-                        <Link href={post.href} className="card-title">
-                          {post.title}
-                        </Link>
-                      </h3>
-                      <p className="card-text">{post.excerpt}</p>
-                      <Link href={post.href} className="card-link">
-                        Read More
-                      </Link>
-                    </div>
-                  </article>
+            <div className="location-content">
+              <p className="section-subtitle">Find Us</p>
+              <h2 className="h2 section-title">Visit Our Clinic</h2>
+              <p className="section-text">
+                We are conveniently located in Andheri West, Mumbai. Pay us a
+                visit for a premium and comfortable dental consultation.
+              </p>
+              <ul className="contact-list">
+                <li>
+                  <div className="icon">
+                    <IoLocationOutline aria-hidden="true" />
+                  </div>
+                  <address className="address-inline">
+                    123, Premium Heights, Link Road, Andheri West, Mumbai,
+                    Maharashtra 400053
+                  </address>
                 </li>
-              ))}
-            </ul>
+                <li>
+                  <div className="icon">
+                    <IoCallOutline aria-hidden="true" />
+                  </div>
+                  <a href="tel:+919876543210" className="contact-link">
+                    +91 98765 43210
+                  </a>
+                </li>
+                <li>
+                  <div className="icon">
+                    <IoMailOutline aria-hidden="true" />
+                  </div>
+                  <a
+                    href="mailto:contact@smiledentalclinic.in"
+                    className="contact-link"
+                  >
+                    contact@smiledentalclinic.in
+                  </a>
+                </li>
+              </ul>
+            </div>
+
+            <div className="location-map">
+              <iframe
+                title="Smile Dental Clinic Location Map"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3769.8037135898317!2d72.833633!3d19.116262!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7c9f69b555555%3A0x1d471b0586e92f25!2sAndheri%20West%2C%20Mumbai%2C%20Maharashtra!5e0!3m2!1sen!2sin!4v1717596000000!5m2!1sen!2sin"
+                width="100%"
+                height="100%"
+                allowFullScreen={true}
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+              ></iframe>
+            </div>
           </div>
         </section>
       </article>
+
+      {selectedService && (
+        <TreatmentModal
+          isOpen={!!selectedService}
+          onClose={() => setSelectedService(null)}
+          service={selectedService}
+          detail={treatmentDetails[selectedService.id]}
+        />
+      )}
     </main>
   );
 }

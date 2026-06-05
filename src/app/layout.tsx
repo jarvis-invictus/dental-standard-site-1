@@ -1,13 +1,11 @@
 import type { Metadata } from 'next';
 import { Poppins, Roboto } from 'next/font/google';
-import Script from 'next/script';
 import type { ReactElement, ReactNode } from 'react';
 
+import { FloatingWhatsAppButton } from '@/components/common/WhatsAppButton';
 import { Footer } from '@/components/layout/Footer';
 import { Header } from '@/components/layout/Header';
-import { AppointmentModal } from '@/components/modals/AppointmentModal';
 import { BackToTopButton } from '@/components/ui/BackToTopButton';
-import { AppointmentModalProvider } from '@/contexts/AppointmentModalContext';
 import '@/styles/globals.scss';
 
 const roboto = Roboto({
@@ -25,9 +23,9 @@ const poppins = Poppins({
 });
 
 export const metadata: Metadata = {
-  title: 'TDental | Compassionate Dental Care',
+  title: 'Premium Dental Care | Modern Dental Clinic',
   description:
-    'TDental delivers advanced, patient-first dental care with a focus on comfort, technology, and lasting smiles.',
+    'Advanced, patient-first dental care with a focus on comfort, technology, and lasting smiles. Book your appointment today.',
   icons: {
     icon: '/favicon.svg',
     shortcut: '/favicon.svg',
@@ -43,25 +41,11 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${roboto.variable} ${poppins.variable}`}>
       <body suppressHydrationWarning>
-        <AppointmentModalProvider>
-          <Header />
-          {children}
-          <Footer />
-          <BackToTopButton />
-          <AppointmentModal />
-        </AppointmentModalProvider>
-
-        {/* Ion Icons */}
-        <Script
-          type="module"
-          src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
-          strategy="afterInteractive"
-        />
-        <Script
-          noModule
-          src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"
-          strategy="afterInteractive"
-        />
+        <Header />
+        {children}
+        <Footer />
+        <BackToTopButton />
+        <FloatingWhatsAppButton />
       </body>
     </html>
   );

@@ -14,24 +14,32 @@ export type Faq = {
 };
 
 export const clinicAddress =
-  '1247/Plot No. 39, 15th Phase,\nLHB Colony, Kanpur, Uttar Pradesh 208024';
+  '123, ITI Road, Near Bata Showroom\nAundh, Pune - 411007, Maharashtra';
 
-export const clinicSchedule = 'Mon - Sat: 9:00am - 10:00pm';
+export const clinicSchedule =
+  'Mon - Sun: 10:00 AM - 8:00 PM\n(Open all days including Sunday)';
 
 export const contactChannels: ContactChannel[] = [
   {
     id: 'phone',
     icon: 'call-outline',
     label: 'Phone',
-    href: 'tel:+917052101786',
-    text: '+91-7052-101-786',
+    href: 'tel:+919699577641',
+    text: '+91 96995 77641',
+  },
+  {
+    id: 'whatsapp',
+    icon: 'logo-whatsapp',
+    label: 'WhatsApp',
+    href: 'https://wa.me/919699577641',
+    text: '+91 96995 77641',
   },
   {
     id: 'email',
     icon: 'mail-outline',
     label: 'Email',
-    href: 'mailto:help@example.com',
-    text: 'help@example.com',
+    href: 'mailto:contact@smiledentalclinic.in',
+    text: 'contact@smiledentalclinic.in',
   },
   {
     id: 'hours',
@@ -51,10 +59,10 @@ export const appointmentServices = [
 ] as const;
 
 export const appointmentDoctors: Doctor['id'][] = [
-  'howard-holmes',
-  'ella-thompson',
-  'vincent-cooper',
-  'danielle-bryant',
+  'dr-priya-sharma',
+  'dr-rajesh-patel',
+  'dr-anita-desai',
+  'dr-vikram-mehra',
 ];
 
 export const contactFaqs: Faq[] = [
@@ -66,7 +74,7 @@ export const contactFaqs: Faq[] = [
   {
     question: 'Which insurance providers do you work with?',
     answer:
-      'TDental partners with 20+ Indian and international insurers. Share your policy while booking and we’ll confirm coverage before your visit.',
+      'We partner with most major insurance providers. Share your policy while booking and we’ll confirm coverage before your visit.',
   },
   {
     question: 'How do I reschedule or cancel?',

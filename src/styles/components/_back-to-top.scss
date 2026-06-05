@@ -4,7 +4,7 @@
 .back-top-btn {
   position: fixed;
   bottom: 10px;
-  right: 20px;
+  left: 20px;
   background-color: $royal-blue-light;
   font-size: 18px;
   color: $white;
@@ -17,7 +17,7 @@
 
   @include tablet-up {
     bottom: 70px;
-    right: 50px;
+    left: 50px;
   }
 
   &.active {
