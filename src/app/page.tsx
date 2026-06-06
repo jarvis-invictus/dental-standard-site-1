@@ -103,9 +103,13 @@ export default function HomePage(): ReactElement {
                         className="w-100"
                       />
                     </div>
-                    <div>
+                    <div style={{ display: 'flex', flexDirection: 'column', height: '100%' }}>
                       <h3 className="h3 card-title">{service.title}</h3>
-                      <p className="card-text">{service.description}</p>
+                      <p className="card-text" style={{ flexGrow: 1 }}>{service.description}</p>
+                      <button style={{ marginTop: '1.5rem', display: 'flex', alignItems: 'center', gap: '6px', color: 'var(--blue-crayola)', background: 'none', border: 'none', fontSize: '1.4rem', fontWeight: 600, cursor: 'pointer' }}>
+                        Learn More
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                      </button>
                     </div>
                   </div>
                 </li>
@@ -144,9 +148,13 @@ export default function HomePage(): ReactElement {
                         className="w-100"
                       />
                     </div>
-                    <div>
+                    <div style={{ display: 'flex', flexDirection: 'column', height: '100%' }}>
                       <h3 className="h3 card-title">{service.title}</h3>
-                      <p className="card-text">{service.description}</p>
+                      <p className="card-text" style={{ flexGrow: 1 }}>{service.description}</p>
+                      <button style={{ marginTop: '1.5rem', display: 'flex', alignItems: 'center', gap: '6px', color: 'var(--blue-crayola)', background: 'none', border: 'none', fontSize: '1.4rem', fontWeight: 600, cursor: 'pointer' }}>
+                        Learn More
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                      </button>
                     </div>
                   </div>
                 </li>
