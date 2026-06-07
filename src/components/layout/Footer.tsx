@@ -113,7 +113,7 @@ export function Footer(): ReactElement {
               target="_blank"
               rel="noopener noreferrer"
               style={{
-                color: 'white',
+                color: 'var(--primary-color, #4f46e5)',
                 fontWeight: 'bold',
                 textDecoration: 'none',
               }}
