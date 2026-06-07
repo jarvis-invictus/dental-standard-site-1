@@ -95,10 +95,45 @@ export function Footer(): ReactElement {
 
       <div className="footer-bottom">
         <div className="container">
-          <p className="copyright">
-            &copy; {new Date().getFullYear()} Smile Dental Clinic. All Rights
-            Reserved.
-          </p>
+          <div
+            className="copyright-container"
+            style={{
+              display: 'flex',
+              flexDirection: 'column',
+              gap: '0.5rem',
+              textAlign: 'center',
+            }}
+          >
+            <p className="copyright">
+              &copy; {new Date().getFullYear()} Smile Dental Clinic. All Rights
+              Reserved.
+            </p>
+            <p style={{ color: 'hsl(0, 0%, 60%)', fontSize: '0.875rem' }}>
+              Powered by{' '}
+              <a
+                href="https://invictus-ai.in/"
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{
+                  color: 'white',
+                  fontWeight: 'bold',
+                  textDecoration: 'none',
+                }}
+                onMouseOver={e =>
+                  (e.currentTarget.style.color =
+                    'var(--primary-color, #4f46e5)')
+                }
+                onMouseOut={e => (e.currentTarget.style.color = 'white')}
+                onFocus={e =>
+                  (e.currentTarget.style.color =
+                    'var(--primary-color, #4f46e5)')
+                }
+                onBlur={e => (e.currentTarget.style.color = 'white')}
+              >
+                Invictus AI
+              </a>
+            </p>
+          </div>
 
           <ul className="legal-links">
             <li>
