@@ -119,16 +119,7 @@ export function Footer(): ReactElement {
                   fontWeight: 'bold',
                   textDecoration: 'none',
                 }}
-                onMouseOver={e =>
-                  (e.currentTarget.style.color =
-                    'var(--primary-color, #4f46e5)')
-                }
-                onMouseOut={e => (e.currentTarget.style.color = 'white')}
-                onFocus={e =>
-                  (e.currentTarget.style.color =
-                    'var(--primary-color, #4f46e5)')
-                }
-                onBlur={e => (e.currentTarget.style.color = 'white')}
+                className="footer-link"
               >
                 Invictus AI
               </a>
