@@ -1,4 +1,5 @@
 import type { Doctor } from '@/data/home';
+import { clinicConfig } from '@/lib/clinic-config';
 
 export type ContactChannel = {
   id: string;
@@ -38,7 +39,7 @@ export const contactChannels: ContactChannel[] = [
     id: 'email',
     icon: 'mail-outline',
     label: 'Email',
-    href: 'mailto:contact@smiledentalclinic.in',
+    href: `mailto:${clinicConfig.contact.email}`,
     text: 'contact@smiledentalclinic.in',
   },
   {

@@ -19,6 +19,7 @@ import { TrustBanner } from '@/components/sections/home/TrustBanner';
 import { MotionReveal } from '@/components/ui/MotionReveal';
 import type { DoctorSocialNetwork, Service } from '@/data/home';
 import { doctors, services, treatmentDetails } from '@/data/home';
+import { clinicConfig } from '@/lib/clinic-config';
 
 const heroBackground: CSSProperties = {
   backgroundImage: "url('/assets/images/hero-bg.png')",
@@ -444,8 +445,11 @@ export default function HomePage(): ReactElement {
                   <div className="icon">
                     <IoCallOutline aria-hidden="true" />
                   </div>
-                  <a href="tel:+919876543210" className="contact-link">
-                    +91 98765 43210
+                  <a
+                    href={`tel:${clinicConfig.contact.phone_primary}`}
+                    className="contact-link"
+                  >
+                    {clinicConfig.contact.phone_primary}
                   </a>
                 </li>
                 <li>
@@ -453,7 +457,7 @@ export default function HomePage(): ReactElement {
                     <IoMailOutline aria-hidden="true" />
                   </div>
                   <a
-                    href="mailto:contact@smiledentalclinic.in"
+                    href={`mailto:${clinicConfig.contact.email}`}
                     className="contact-link"
                   >
                     contact@smiledentalclinic.in
@@ -465,7 +469,7 @@ export default function HomePage(): ReactElement {
             <div className="location-map">
               <iframe
                 title="Smile Dental Clinic Location Map"
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3769.8037135898317!2d72.833633!3d19.116262!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7c9f69b555555%3A0x1d471b0586e92f25!2sAndheri%20West%2C%20Mumbai%2C%20Maharashtra!5e0!3m2!1sen!2sin!4v1717596000000!5m2!1sen!2sin"
+                src={clinicConfig.contact.google_maps_embed}
                 width="100%"
                 height="100%"
                 allowFullScreen={true}

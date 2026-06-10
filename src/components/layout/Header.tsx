@@ -16,6 +16,7 @@ import {
 } from 'react-icons/io5';
 
 import { WhatsAppButton } from '@/components/common/WhatsAppButton';
+import { clinicConfig } from '@/lib/clinic-config';
 
 const NAV_LINKS = [
   { label: 'Home', href: '#home' },
@@ -85,7 +86,7 @@ export function Header(): ReactElement {
             <li className="contact-item">
               <IoMailOutline aria-hidden="true" color="hsl(225, 68%, 53%)" />
               <a
-                href="mailto:contact@smiledentalclinic.in"
+                href={`mailto:${clinicConfig.contact.email}`}
                 className="contact-link"
               >
                 contact@smiledentalclinic.in

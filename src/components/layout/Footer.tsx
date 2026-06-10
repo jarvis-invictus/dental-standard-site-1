@@ -10,6 +10,8 @@ import {
   IoTimeOutline,
 } from 'react-icons/io5';
 
+import { clinicConfig } from '@/lib/clinic-config';
+
 const socialLinks = [
   {
     href: 'https://www.facebook.com/yourclinic',
@@ -83,7 +85,7 @@ export function Footer(): ReactElement {
                 <IoMailOutline aria-hidden="true" />
               </span>
               <a
-                href="mailto:contact@smiledentalclinic.in"
+                href={`mailto:${clinicConfig.contact.email}`}
                 className="footer-link"
               >
                 contact@smiledentalclinic.in
