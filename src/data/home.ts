@@ -1,3 +1,5 @@
+import { clinicConfig } from '@/lib/clinic-config';
+
 export type Service = {
   id: string;
   title: string;
@@ -30,71 +32,25 @@ export type BlogPost = {
   href: string;
 };
 
-export const services: Service[] = [
-  {
-    id: 'root-canal',
-    title: 'Root Canal Therapy',
-    description:
-      'Gentle, precision treatments that save natural teeth and stop chronic pain fast.',
-    icon: '/assets/images/service-icon-1.png',
-    href: '/services#service-root-canal',
-  },
-  {
-    id: 'alignment',
-    title: 'Teeth Alignment',
-    description:
-      'Modern aligners and braces that straighten smiles with fewer visits and faster results.',
-    icon: '/assets/images/service-icon-2.png',
-    href: '/services#service-alignment',
-  },
-  {
-    id: 'cosmetic',
-    title: 'Cosmetic Dentistry',
-    description:
-      'Whitening, veneers, and contouring designed to match your facial features and goals.',
-    icon: '/assets/images/service-icon-3.png',
-    href: '/services#service-cosmetic',
-  },
-  {
-    id: 'oral-hygiene',
-    title: 'Preventive Care',
-    description:
-      'Comfort-first cleanings, fluoride, and sealants to keep your family smiling year-round.',
-    icon: '/assets/images/service-icon-4.png',
-    href: '/services#service-hygiene',
-  },
-  {
-    id: 'advisory',
-    title: 'Dental Consultation',
-    description:
-      'Expert consultations for personalized care plans, insurance guidance, and emergency triage.',
-    icon: '/assets/images/service-icon-5.png',
-    href: '/services#service-advisory',
-  },
-  {
-    id: 'cavity',
-    title: 'Cavity Detection',
-    description:
-      'Digital diagnostics that pinpoint concerns early so treatments stay minimally invasive.',
-    icon: '/assets/images/service-icon-6.png',
-    href: '/services#service-cavity',
-  },
-];
+export const services: Service[] = clinicConfig.services || [];
 
-export const doctors: Doctor[] = [
-  {
-    id: 'dr-sharma',
-    name: 'Dr. Rahul Sharma',
-    role: 'Principal Dentist & Implantologist',
-    image: '/assets/images/doctor-1.png',
-    profileHref: '#doctor',
-    socials: [
-      { network: 'facebook', href: 'https://www.facebook.com/yourclinic' },
-      { network: 'twitter', href: 'https://twitter.com/yourclinic' },
-      { network: 'instagram', href: 'https://www.instagram.com/yourclinic' },
-    ],
-  },
-];
+export const doctors: Doctor[] = clinicConfig.doctors.map((doc, idx) => ({
+  id: `doctor-${idx}`,
+  name: doc.name,
+  role: doc.specializations
+    ? doc.specializations.join(', ')
+    : doc.qualifications || 'Dentist',
+  image: doc.photo || '/assets/images/doctor-1.png',
+  profileHref: '#doctor',
+  socials: Object.entries(clinicConfig.social || {})
+    .map(([network, href]) => ({
+      network: network as DoctorSocialNetwork,
+      href: href as string,
+    }))
+    .filter(social =>
+      ['facebook', 'instagram', 'twitter'].includes(social.network)
+    ),
+}));
 
 export const blogPosts: BlogPost[] = [
   {
