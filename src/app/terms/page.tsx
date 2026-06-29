@@ -28,10 +28,10 @@ export default function TermsPage(): ReactElement {
 
             <h2>1. Acceptance of Terms</h2>
             <p>
-              By accessing our website at smiledentalclinic.in or using our
-              dental services at our clinic in Aundh, Pune, you agree to be
-              bound by these Terms of Service. If you do not agree to these
-              terms, please do not use our services.
+              By accessing our website at s1.invictus-ai.in or using our dental
+              services at our clinic in Aundh, Pune, you agree to be bound by
+              these Terms of Service. If you do not agree to these terms, please
+              do not use our services.
             </p>
             <p>
               These terms are governed by the laws of India and the jurisdiction
@@ -281,7 +281,7 @@ export default function TermsPage(): ReactElement {
                 <br />
                 Phone: +91 96995 77641
                 <br />
-                Email: contact@smiledentalclinic.in
+                Email: contact@s1.invictus-ai.in
                 <br />
                 Hours: Mon-Sun, 10:00 AM - 8:00 PM
               </p>

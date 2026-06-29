@@ -3,6 +3,7 @@
 import React from 'react';
 
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
+import { clinicConfig } from '@/lib/clinic-config';
 
 export function TrustBanner() {
   const avatars = [
@@ -39,8 +40,11 @@ export function TrustBanner() {
         ))}
       </div>
       <p className="trust-text">
-        Trusted by <strong className="trust-count">5,000+</strong> Happy
-        Patients
+        Trusted by{' '}
+        <strong className="trust-count">
+          {clinicConfig.stats.patients_treated}
+        </strong>{' '}
+        Happy Patients
       </p>
     </div>
   );

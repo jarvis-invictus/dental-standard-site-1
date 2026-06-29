@@ -1,20 +1,27 @@
-$light-steel-blue: hsl(218, 33%, 77%);
-$royal-blue-light: hsl(225, 68%, 53%);
-$flickr-blue_30: hsla(225, 68%, 53%, 0.3);
-$carolina-blue: hsl(201, 92%, 47%);
-$oxford-blue-1: hsl(218, 70%, 18%);
-$oxford-blue-2: hsl(217, 100%, 12%);
-$oxford-blue-3: hsl(218, 71%, 11%);
-$gainsboro_50: hsla(0, 0%, 85%, 0.5);
-$lavender-web: hsl(225, 67%, 91%);
-$sonic-silver: hsl(0, 0%, 47%);
-$light-gray: hsl(0, 0%, 84%);
-$cultured: hsl(0, 0%, 97%);
-$white: hsl(0, 0%, 100%);
-$black: hsl(0, 0%, 0%);
-$jet: hsl(0, 0%, 20%);
+$light-steel-blue: var(--light-steel-blue, hsl(218, 33%, 77%));
+$royal-blue-light: var(--primary-color, hsl(225, 68%, 53%));
+$flickr-blue_30: var(--primary-color-30, hsla(225, 68%, 53%, 0.3));
+$carolina-blue: var(--secondary-color, hsl(201, 92%, 47%));
+$oxford-blue-1: var(--oxford-blue-1, hsl(218, 70%, 18%));
+$oxford-blue-2: var(--oxford-blue-2, hsl(217, 100%, 12%));
+$oxford-blue-3: var(--oxford-blue-3, hsl(218, 71%, 11%));
+$gainsboro_50: var(--gainsboro-50, hsla(0, 0%, 85%, 0.5));
+$lavender-web: var(--lavender-web, hsl(225, 67%, 91%));
+$sonic-silver: var(--sonic-silver, hsl(0, 0%, 47%));
+$light-gray: var(--light-gray, hsl(0, 0%, 84%));
+$cultured: var(--cultured, hsl(0, 0%, 97%));
+$white: var(--white, hsl(0, 0%, 100%));
+$black: var(--black, hsl(0, 0%, 0%));
+$jet: var(--jet, hsl(0, 0%, 20%));
 
-$gradient: linear-gradient(90deg, $carolina-blue 0%, $royal-blue-light 100%);
+$gradient: var(
+  --theme-gradient,
+  linear-gradient(
+    90deg,
+    var(--secondary-color, hsl(201, 92%, 47%)) 0%,
+    var(--primary-color, hsl(225, 68%, 53%)) 100%
+  )
+);
 
 // Font families - fallback values, use var(--font-*) in CSS for Next.js fonts
 $ff-roboto: var(--font-roboto, 'Roboto', sans-serif);
@@ -38,8 +45,8 @@ $section-padding: 120px;
 $shadow-1: 4px 4px 15px hsla(0, 0%, 0%, 0.1);
 $shadow-2: 0 10px 15px hsla(0, 0%, 0%, 0.1);
 $shadow-3: 0 20px 60px hsla(0, 0%, 0%, 0.08);
-$shadow-4: 0 10px 30px hsla(225, 68%, 53%, 0.35);
-$shadow-5: 0 12px 40px hsla(225, 68%, 53%, 0.15);
+$shadow-4: 0 10px 30px var(--primary-color-35, hsla(225, 68%, 53%, 0.35));
+$shadow-5: 0 12px 40px var(--primary-color-15, hsla(225, 68%, 53%, 0.15));
 
 $radius-6: 6px;
 $radius-4: 4px;

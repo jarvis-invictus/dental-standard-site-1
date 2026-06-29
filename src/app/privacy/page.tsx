@@ -212,7 +212,7 @@ export default function PrivacyPage(): ReactElement {
                 <br />
                 Phone: +91 96995 77641
                 <br />
-                Email: privacy@smiledentalclinic.in
+                Email: privacy@s1.invictus-ai.in
               </p>
             </div>
 

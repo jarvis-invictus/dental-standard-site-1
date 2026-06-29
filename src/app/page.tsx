@@ -22,7 +22,7 @@ import { doctors, services, treatmentDetails } from '@/data/home';
 import { clinicConfig } from '@/lib/clinic-config';
 
 const heroBackground: CSSProperties = {
-  backgroundImage: "url('/assets/images/hero-bg.png')",
+  backgroundImage: "url('/assets/images/hero-bg.webp')",
 };
 
 const socialIconMap: Record<DoctorSocialNetwork, ReactElement> = {
@@ -46,16 +46,13 @@ export default function HomePage(): ReactElement {
           <div className="container">
             <div className="hero-content">
               <MotionReveal animation="fade-up" delay={0.1}>
-                <h1 className="h1 hero-title">
-                  Premium Dental Care for Your Family&apos;s Smile
-                </h1>
+                <h1 className="h1 hero-title">{clinicConfig.tagline}</h1>
               </MotionReveal>
               <MotionReveal animation="fade-up" delay={0.2}>
                 <p className="hero-text">
-                  Experience advanced, painless dental treatments with
-                  Pune&apos;s leading implantologist and cosmetic dentist. We
-                  blend modern clinical technology with warm, personalized
-                  hospitality.
+                  Experience advanced, painless dental treatments at{' '}
+                  {clinicConfig.name}. We blend modern clinical technology with
+                  warm, personalized hospitality.
                 </p>
               </MotionReveal>
               <MotionReveal animation="fade-up" delay={0.3}>
@@ -78,7 +75,7 @@ export default function HomePage(): ReactElement {
             >
               <figure>
                 <Image
-                  src="/assets/images/hero-banner.png"
+                  src="/assets/images/hero-banner.webp"
                   width={587}
                   height={839}
                   alt="Dentist smiling with patient"
@@ -177,7 +174,7 @@ export default function HomePage(): ReactElement {
 
               <li className="service-banner" aria-hidden>
                 <Image
-                  src="/assets/images/service-banner.png"
+                  src="/assets/images/service-banner.webp"
                   width={409}
                   height={467}
                   alt="Dental team collaborating"
@@ -273,7 +270,7 @@ export default function HomePage(): ReactElement {
             >
               <figure>
                 <Image
-                  src="/assets/images/about-banner.png"
+                  src="/assets/images/about-banner.webp"
                   width={470}
                   height={538}
                   alt="Dentist explaining treatment plan"
@@ -285,7 +282,7 @@ export default function HomePage(): ReactElement {
             <div className="about-content">
               <MotionReveal animation="fade-up" delay={0.1}>
                 <p className="section-subtitle">
-                  Why patients choose Smile Dental Clinic
+                  Why patients choose {clinicConfig.name}
                 </p>
                 <h2 className="h2 section-title">
                   Compassion meets clinical excellence
@@ -394,7 +391,7 @@ export default function HomePage(): ReactElement {
             >
               <figure>
                 <Image
-                  src="/assets/images/cta-banner.png"
+                  src="/assets/images/cta-banner.webp"
                   width={1056}
                   height={1076}
                   alt="Dentist high-fiving a patient"
@@ -436,9 +433,11 @@ export default function HomePage(): ReactElement {
                   <div className="icon">
                     <IoLocationOutline aria-hidden="true" />
                   </div>
-                  <address className="address-inline">
-                    123, Premium Heights, Link Road, Andheri West, Mumbai,
-                    Maharashtra 400053
+                  <address
+                    className="address-inline"
+                    style={{ whiteSpace: 'pre-line' }}
+                  >
+                    {clinicConfig.contact.address_full}
                   </address>
                 </li>
                 <li>
@@ -460,7 +459,7 @@ export default function HomePage(): ReactElement {
                     href={`mailto:${clinicConfig.contact.email}`}
                     className="contact-link"
                   >
-                    contact@smiledentalclinic.in
+                    {clinicConfig.contact.email}
                   </a>
                 </li>
               </ul>

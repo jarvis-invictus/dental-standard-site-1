@@ -3,10 +3,16 @@ export const clinicConfig = {
   tagline: 'Your perfect smile starts here',
   established: 2018,
 
+  seo: {
+    meta_title: 'Smile Dental Clinic | Your perfect smile starts here',
+    meta_description:
+      'Welcome to Smile Dental Clinic. We combine advanced technology with compassionate care to give you the perfect smile in Pune.',
+  },
+
   contact: {
     phone_primary: '+91 96995 77641',
     phone_whatsapp: '+91 96995 77641',
-    email: 'contact@smiledentalclinic.in',
+    email: 'contact@s1.invictus-ai.in',
     address_full: '123 ITI Road, Near Bata, Aundh, Pune 411007',
     google_maps_url: 'https://maps.google.com/...',
     google_maps_embed: 'https://www.google.com/maps/embed?pb=...',
@@ -40,7 +46,7 @@ export const clinicConfig = {
       ],
       languages: ['English', 'Hindi', 'Marathi'],
       bio: 'Dr. Rahul Sharma is a highly skilled orthodontist dedicated to providing exceptional dental care. He specializes in advanced cosmetic dentistry and smile makeovers.',
-      photo: '/assets/images/doctor-1.png',
+      photo: '/assets/images/doctor-1.webp',
       ida_number: 'IDA-MH-34521',
     },
   ],
@@ -51,7 +57,7 @@ export const clinicConfig = {
       title: 'Root Canal Therapy',
       description:
         'Gentle, precision treatments that save natural teeth and stop chronic pain fast.',
-      icon: '/assets/images/service-icon-1.png',
+      icon: '/assets/images/service-icon-1.webp',
       href: '/services#service-root-canal',
     },
     {
@@ -59,7 +65,7 @@ export const clinicConfig = {
       title: 'Teeth Alignment',
       description:
         'Modern aligners and braces that straighten smiles with fewer visits and faster results.',
-      icon: '/assets/images/service-icon-2.png',
+      icon: '/assets/images/service-icon-2.webp',
       href: '/services#service-alignment',
     },
     {
@@ -67,7 +73,7 @@ export const clinicConfig = {
       title: 'Cosmetic Dentistry',
       description:
         'Whitening, veneers, and contouring designed to match your facial features and goals.',
-      icon: '/assets/images/service-icon-3.png',
+      icon: '/assets/images/service-icon-3.webp',
       href: '/services#service-cosmetic',
     },
     {
@@ -75,7 +81,7 @@ export const clinicConfig = {
       title: 'Preventive Care',
       description:
         'Comfort-first cleanings, fluoride, and sealants to keep your family smiling year-round.',
-      icon: '/assets/images/service-icon-4.png',
+      icon: '/assets/images/service-icon-4.webp',
       href: '/services#service-hygiene',
     },
     {
@@ -83,7 +89,7 @@ export const clinicConfig = {
       title: 'Dental Consultation',
       description:
         'Expert consultations for personalized care plans, insurance guidance, and emergency triage.',
-      icon: '/assets/images/service-icon-5.png',
+      icon: '/assets/images/service-icon-5.webp',
       href: '/services#service-advisory',
     },
     {
@@ -91,7 +97,7 @@ export const clinicConfig = {
       title: 'Cavity Detection',
       description:
         'Digital diagnostics that pinpoint concerns early so treatments stay minimally invasive.',
-      icon: '/assets/images/service-icon-6.png',
+      icon: '/assets/images/service-icon-6.webp',
       href: '/services#service-cavity',
     },
   ],
@@ -134,6 +140,6 @@ export const clinicConfig = {
     years_experience: '15+',
   },
 
-  domain: 'https://smiledentalclinic.in',
+  domain: 'https://s1.invictus-ai.in',
   whatsapp_default_message: 'Hello! I would like to book a consultation.',
 };

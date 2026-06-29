@@ -25,28 +25,25 @@ const NAV_LINKS = [
   { label: 'Find Us', href: '#location' },
 ] as const;
 
-const SOCIAL_LINKS = [
-  {
-    href: 'https://www.facebook.com/yourclinic',
-    label: 'Facebook',
-    icon: <IoLogoFacebook />,
-  },
-  {
-    href: 'https://www.instagram.com/yourclinic',
-    label: 'Instagram',
-    icon: <IoLogoInstagram />,
-  },
-  {
-    href: 'https://twitter.com/yourclinic',
-    label: 'Twitter',
-    icon: <IoLogoTwitter />,
-  },
-  {
-    href: 'https://www.youtube.com/@yourclinic',
-    label: 'YouTube',
-    icon: <IoLogoYoutube />,
-  },
-] as const;
+const SOCIAL_LINKS = Object.entries(clinicConfig.social || {}).map(
+  ([network, href]) => {
+    let icon = <IoLogoFacebook />;
+    let label = 'Facebook';
+    if (network === 'instagram') {
+      icon = <IoLogoInstagram />;
+      label = 'Instagram';
+    }
+    if (network === 'twitter') {
+      icon = <IoLogoTwitter />;
+      label = 'Twitter';
+    }
+    if (network === 'youtube') {
+      icon = <IoLogoYoutube />;
+      label = 'YouTube';
+    }
+    return { href: href as string, label, icon };
+  }
+);
 
 export function Header(): ReactElement {
   const pathname = usePathname();
@@ -89,13 +86,16 @@ export function Header(): ReactElement {
                 href={`mailto:${clinicConfig.contact.email}`}
                 className="contact-link"
               >
-                contact@smiledentalclinic.in
+                {clinicConfig.contact.email}
               </a>
             </li>
             <li className="contact-item">
               <IoCallOutline aria-hidden="true" color="hsl(225, 68%, 53%)" />
-              <a href="tel:+919699577641" className="contact-link">
-                +91 96995 77641
+              <a
+                href={`tel:${clinicConfig.contact.phone_primary.replace(/\\s+/g, '')}`}
+                className="contact-link"
+              >
+                {clinicConfig.contact.phone_primary}
               </a>
             </li>
           </ul>
@@ -120,8 +120,12 @@ export function Header(): ReactElement {
 
       <div className={headerBottomClassName} data-header>
         <div className="container">
-          <Link href="/" className="logo" aria-label="Smile Dental Clinic Home">
-            Smile Dental Clinic
+          <Link
+            href="/"
+            className="logo"
+            aria-label={`${clinicConfig.name} Home`}
+          >
+            {clinicConfig.name}
           </Link>
 
           <nav

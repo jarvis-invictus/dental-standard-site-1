@@ -1,4 +1,3 @@
-import type { Doctor } from '@/data/home';
 import { clinicConfig } from '@/lib/clinic-config';
 
 export type ContactChannel = {
@@ -14,33 +13,33 @@ export type Faq = {
   answer: string;
 };
 
-export const clinicAddress =
-  '123, ITI Road, Near Bata Showroom\nAundh, Pune - 411007, Maharashtra';
+export const clinicAddress = clinicConfig.contact.address_full;
 
-export const clinicSchedule =
-  'Mon - Sun: 10:00 AM - 8:00 PM\n(Open all days including Sunday)';
+export const clinicSchedule = clinicConfig.hours
+  .map(h => `${h.day}: ${h.time}`)
+  .join('\n');
 
 export const contactChannels: ContactChannel[] = [
   {
     id: 'phone',
     icon: 'call-outline',
     label: 'Phone',
-    href: 'tel:+919699577641',
-    text: '+91 96995 77641',
+    href: `tel:${clinicConfig.contact.phone_primary.replace(/\s+/g, '')}`,
+    text: clinicConfig.contact.phone_primary,
   },
   {
     id: 'whatsapp',
     icon: 'logo-whatsapp',
     label: 'WhatsApp',
-    href: 'https://wa.me/919699577641',
-    text: '+91 96995 77641',
+    href: `https://wa.me/${clinicConfig.contact.phone_whatsapp.replace(/\D/g, '')}`,
+    text: clinicConfig.contact.phone_whatsapp,
   },
   {
     id: 'email',
     icon: 'mail-outline',
     label: 'Email',
     href: `mailto:${clinicConfig.contact.email}`,
-    text: 'contact@smiledentalclinic.in',
+    text: clinicConfig.contact.email,
   },
   {
     id: 'hours',
@@ -50,21 +49,11 @@ export const contactChannels: ContactChannel[] = [
   },
 ];
 
-export const appointmentServices = [
-  'Root Canal Therapy',
-  'Alignment Teeth',
-  'Cosmetic Dentistry',
-  'Oral Hygiene',
-  'Live Advisory',
-  'Cavity Inspection',
-] as const;
+export const appointmentServices = clinicConfig.services.map(s => s.title);
 
-export const appointmentDoctors: Doctor['id'][] = [
-  'dr-priya-sharma',
-  'dr-rajesh-patel',
-  'dr-anita-desai',
-  'dr-vikram-mehra',
-];
+export const appointmentDoctors = clinicConfig.doctors.map(
+  (_, idx) => `doctor-${idx}`
+);
 
 export const contactFaqs: Faq[] = [
   {

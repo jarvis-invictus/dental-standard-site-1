@@ -22,11 +22,12 @@ const poppins = Poppins({
   display: 'swap',
 });
 
+import { clinicConfig } from '@/lib/clinic-config';
+
 export const metadata: Metadata = {
-  metadataBase: new URL('https://smiledentalclinic.in'),
-  title: 'Smile Dental Clinic - Premium Dentist in Aundh, Pune',
-  description:
-    'Experience painless root canals, teeth alignment, cosmetic dentistry, and dental implants at Smile Dental Clinic, Aundh, Pune. Schedule your consultation today!',
+  metadataBase: new URL('https://s1.invictus-ai.in'),
+  title: clinicConfig.seo.meta_title,
+  description: clinicConfig.seo.meta_description,
   icons: {
     icon: '/favicon.svg',
     shortcut: '/favicon.svg',
@@ -36,19 +37,18 @@ export const metadata: Metadata = {
     canonical: '/',
   },
   openGraph: {
-    title: 'Smile Dental Clinic - Premium Dentist in Aundh, Pune',
-    description:
-      'Experience painless root canals, teeth alignment, cosmetic dentistry, and dental implants at Smile Dental Clinic, Aundh, Pune. Schedule your consultation today!',
-    url: 'https://smiledentalclinic.in',
-    siteName: 'Smile Dental Clinic',
+    title: clinicConfig.seo.meta_title,
+    description: clinicConfig.seo.meta_description,
+    url: 'https://s1.invictus-ai.in',
+    siteName: clinicConfig.name,
     locale: 'en_IN',
     type: 'website',
     images: [
       {
-        url: '/assets/images/hero-banner.png',
+        url: '/assets/images/hero-banner.webp',
         width: 1200,
         height: 630,
-        alt: 'Smile Dental Clinic - Premium Dental Care Pune',
+        alt: `${clinicConfig.name} - Premium Dental Care`,
       },
     ],
   },
@@ -67,67 +67,67 @@ export const metadata: Metadata = {
 
 const jsonLd = {
   '@context': 'https://schema.org',
-  '@type': 'Dentist',
-  '@id': 'https://smiledentalclinic.in/#dentist',
-  name: 'Smile Dental Clinic',
-  url: 'https://smiledentalclinic.in',
-  logo: 'https://smiledentalclinic.in/favicon.svg',
-  image: 'https://smiledentalclinic.in/assets/images/hero-banner.png',
-  description:
-    "Premium Dental Care for Your Family's Smile in Aundh, Pune. Painless root canals, teeth alignment, and dental implants by Pune's leading specialists.",
-  telephone: '+919699577641',
-  email: 'contact@smiledentalclinic.in',
+  '@type': ['Dentist', 'MedicalBusiness'],
+  '@id': 'https://s1.invictus-ai.in/#dentist',
+  name: clinicConfig.name,
+  url: 'https://s1.invictus-ai.in',
+  logo: 'https://s1.invictus-ai.in/favicon.svg',
+  image: 'https://s1.invictus-ai.in/assets/images/hero-banner.webp',
+  description: clinicConfig.seo.meta_description,
+  telephone: clinicConfig.contact.phone_primary,
+  email: clinicConfig.contact.email,
   priceRange: '$$',
   address: {
     '@type': 'PostalAddress',
-    streetAddress: '123, ITI Road, Near Bata Showroom, Aundh',
-    addressLocality: 'Pune',
-    addressRegion: 'Maharashtra',
-    postalCode: '411007',
+    streetAddress:
+      clinicConfig.contact.address_full.split('\\n')[0] ||
+      clinicConfig.contact.address_full,
+    addressLocality:
+      clinicConfig.contact.address_full.split('\\n').length > 1
+        ? clinicConfig.contact.address_full.split('\\n')[1]
+        : '',
     addressCountry: 'IN',
   },
   geo: {
     '@type': 'GeoCoordinates',
-    latitude: '18.5602',
-    longitude: '73.8031',
+    latitude:
+      clinicConfig.contact.google_maps_embed.match(/!2d([0-9.]+)/)?.[1] ||
+      '18.5602',
+    longitude:
+      clinicConfig.contact.google_maps_embed.match(/!3d([0-9.]+)/)?.[1] ||
+      '73.8031',
   },
-  openingHoursSpecification: [
-    {
-      '@type': 'OpeningHoursSpecification',
-      dayOfWeek: [
-        'Monday',
-        'Tuesday',
-        'Wednesday',
-        'Thursday',
-        'Friday',
-        'Saturday',
-        'Sunday',
-      ],
-      opens: '10:00',
-      closes: '20:00',
-    },
-  ],
-  sameAs: [
-    'https://www.facebook.com/yourclinic',
-    'https://www.instagram.com/yourclinic',
-    'https://twitter.com/yourclinic',
-  ],
-  knowsAbout: [
-    'Root Canal Therapy',
-    'Teeth Alignment',
-    'Cosmetic Dentistry',
-    'Preventive Care',
-    'Dental Consultation',
-    'Cavity Detection',
-    'Dental Implants',
-  ],
+  openingHoursSpecification: clinicConfig.hours.map(h => ({
+    '@type': 'OpeningHoursSpecification',
+    dayOfWeek: h.day.split('-').map(d => d.trim()),
+    opens: h.time.split('-')[0]?.trim() || '10:00 AM',
+    closes: h.time.split('-')[1]?.trim() || '8:00 PM',
+  })),
+  sameAs: Object.values(clinicConfig.social || {}),
+  knowsAbout: clinicConfig.services.map(s => s.title),
 };
+
+function hexToRgb(hex: string) {
+  const result = /^#?([a-f0-9]{2})([a-f0-9]{2})([a-f0-9]{2})$/i.exec(hex);
+  return result
+    ? `${parseInt(result[1], 16)}, ${parseInt(result[2], 16)}, ${parseInt(result[3], 16)}`
+    : '14, 165, 233';
+}
 
 export default function RootLayout({
   children,
 }: {
   children: ReactNode;
 }): ReactElement {
+  const primaryRgb = hexToRgb(clinicConfig.theme.primary);
+  const themeStyles = {
+    '--primary-color': clinicConfig.theme.primary,
+    '--secondary-color': clinicConfig.theme.secondary,
+    '--primary-color-35': `rgba(${primaryRgb}, 0.35)`,
+    '--primary-color-15': `rgba(${primaryRgb}, 0.15)`,
+    '--primary-color-30': `rgba(${primaryRgb}, 0.3)`,
+  } as React.CSSProperties;
+
   return (
     <html lang="en" className={`${roboto.variable} ${poppins.variable}`}>
       <head>
@@ -136,7 +136,7 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
       </head>
-      <body suppressHydrationWarning>
+      <body suppressHydrationWarning style={themeStyles}>
         <Header />
         {children}
         <Footer />

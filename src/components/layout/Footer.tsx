@@ -9,26 +9,29 @@ import {
   IoMailOutline,
   IoTimeOutline,
 } from 'react-icons/io5';
+import { IoLogoYoutube } from 'react-icons/io5';
 
 import { clinicConfig } from '@/lib/clinic-config';
 
-const socialLinks = [
-  {
-    href: 'https://www.facebook.com/yourclinic',
-    label: 'Facebook',
-    icon: <IoLogoFacebook />,
-  },
-  {
-    href: 'https://www.instagram.com/yourclinic',
-    label: 'Instagram',
-    icon: <IoLogoInstagram />,
-  },
-  {
-    href: 'https://twitter.com/yourclinic',
-    label: 'Twitter',
-    icon: <IoLogoTwitter />,
-  },
-] as const;
+const socialLinks = Object.entries(clinicConfig.social || {}).map(
+  ([network, href]) => {
+    let icon = <IoLogoFacebook />;
+    let label = 'Facebook';
+    if (network === 'instagram') {
+      icon = <IoLogoInstagram />;
+      label = 'Instagram';
+    }
+    if (network === 'twitter') {
+      icon = <IoLogoTwitter />;
+      label = 'Twitter';
+    }
+    if (network === 'youtube') {
+      icon = <IoLogoYoutube />;
+      label = 'YouTube';
+    }
+    return { href: href as string, label, icon };
+  }
+);
 
 export function Footer(): ReactElement {
   return (
@@ -37,23 +40,23 @@ export function Footer(): ReactElement {
         <div className="container">
           <div className="footer-brand">
             <Link href="/" className="logo">
-              Smile Dental Clinic
+              {clinicConfig.name}
             </Link>
 
             <p className="footer-text">
-              Premium dental care in Aundh, Pune. We combine advanced technology
-              with compassionate care to give you the perfect smile. Book your
-              appointment on WhatsApp for a healthier, brighter smile today.
+              Welcome to {clinicConfig.name}. {clinicConfig.tagline}. We combine
+              advanced technology with compassionate care to give you the
+              perfect smile.
             </p>
 
             <div className="schedule">
               <span className="schedule-icon">
                 <IoTimeOutline aria-hidden="true" />
               </span>
-              <span className="span">
-                Monday - Sunday:
-                <br />
-                10:00 AM - 8:00 PM
+              <span className="span" style={{ whiteSpace: 'pre-line' }}>
+                {clinicConfig.hours
+                  .map(h => `${h.day}:\\n${h.time}`)
+                  .join('\\n\\n')}
               </span>
             </div>
           </div>
@@ -66,18 +69,19 @@ export function Footer(): ReactElement {
               <span className="item-icon">
                 <IoLocationOutline aria-hidden="true" />
               </span>
-              <address className="item-text">
-                123, ITI Road, Near Bata Showroom
-                <br />
-                Aundh, Pune - 411007, Maharashtra
+              <address className="item-text" style={{ whiteSpace: 'pre-line' }}>
+                {clinicConfig.contact.address_full}
               </address>
             </li>
             <li className="footer-item">
               <span className="item-icon">
                 <IoCallOutline aria-hidden="true" />
               </span>
-              <a href="tel:+919699577641" className="footer-link">
-                +91 96995 77641
+              <a
+                href={`tel:${clinicConfig.contact.phone_primary.replace(/\\s+/g, '')}`}
+                className="footer-link"
+              >
+                {clinicConfig.contact.phone_primary}
               </a>
             </li>
             <li className="footer-item">
@@ -88,7 +92,7 @@ export function Footer(): ReactElement {
                 href={`mailto:${clinicConfig.contact.email}`}
                 className="footer-link"
               >
-                contact@smiledentalclinic.in
+                {clinicConfig.contact.email}
               </a>
             </li>
           </ul>
@@ -98,7 +102,7 @@ export function Footer(): ReactElement {
       <div className="footer-bottom">
         <div className="container">
           <p className="copyright">
-            &copy; {new Date().getFullYear()} Smile Dental Clinic. All Rights
+            &copy; {new Date().getFullYear()} {clinicConfig.name}. All Rights
             Reserved.{' '}
             <span
               style={{
