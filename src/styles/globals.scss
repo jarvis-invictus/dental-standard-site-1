@@ -111,7 +111,11 @@ body.modal-open {
 }
 
 .container {
-  padding-inline: 25px;
+  padding-inline: 16px; /* Fluid edge-to-edge on mobile */
+
+  @include tablet-up {
+    padding-inline: 25px;
+  }
 }
 
 .section {
@@ -140,7 +144,7 @@ body.modal-open {
 
 .h1 {
   color: $oxford-blue-1;
-  font-size: $fs-2;
+  font-size: clamp(3.2rem, 8vw, 4.5rem); /* Scalable mobile font */
 
   @include desktop-up {
     font-size: 8rem;
@@ -153,7 +157,7 @@ body.modal-open {
 }
 
 .h2 {
-  font-size: $fs-1;
+  font-size: clamp(2.8rem, 6vw, 3.5rem);
 
   @include desktop-up {
     font-size: 5.5rem;

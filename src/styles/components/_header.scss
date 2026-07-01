@@ -134,6 +134,8 @@
   display: grid;
   place-items: center;
   border-radius: $radius-4;
+  position: relative;
+  z-index: 101; /* Stay above full screen mobile menu */
 
   @include laptop-up {
     display: none;
@@ -151,17 +153,28 @@
 }
 
 .navbar {
-  position: absolute;
-  top: calc(100% + 5px);
-  left: 25px;
-  right: 25px;
-  background-color: $white;
-  padding-inline: 0;
-  box-shadow: $shadow-1;
-  max-height: 0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  padding: 100px 25px 25px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  z-index: 100;
+
+  opacity: 0;
   visibility: hidden;
-  overflow: hidden;
-  transition: 0.25s $cubic-out;
+  transform: translateY(-20px);
+  transition:
+    opacity 0.3s ease,
+    transform 0.3s ease,
+    visibility 0.3s ease;
 
   @include laptop-up {
     all: unset !important;
@@ -170,8 +183,8 @@
 
   &.active {
     visibility: visible;
-    max-height: 244px;
-    transition-duration: 0.5s;
+    opacity: 1;
+    transform: translateY(0);
 
     @include laptop-up {
       all: unset !important;
@@ -181,8 +194,9 @@
 }
 
 .navbar-list {
+  width: 100%;
   > li:not(:last-child) {
-    border-block-end: 1px solid $gainsboro_50;
+    border-block-end: 1px solid rgba(0, 0, 0, 0.05);
 
     @include laptop-up {
       border-block-end: none;
@@ -193,6 +207,7 @@
     display: flex;
     align-items: center;
     gap: 20px;
+    width: auto;
   }
 
   @include xl-desktop-up {
@@ -201,13 +216,20 @@
 }
 
 .navbar-link {
+  display: block;
+  text-align: center;
+  font-size: 1.5rem;
   color: $jet;
   text-transform: uppercase;
   font-weight: $fw-600;
-  padding: 15px;
+  padding: 20px;
   transition: color $transition;
 
   @include laptop-up {
+    display: inline-block; /* Reset block */
+    text-align: left; /* Reset text align */
+    font-size: inherit; /* Reset font size to original inheritance */
+    padding: 15px; /* Original padding */
     color: $oxford-blue-1;
     font-family: $ff-poppins;
     text-transform: capitalize;
@@ -222,4 +244,29 @@
 
 .hero-title {
   margin-block: 15px 30px;
+}
+
+.mobile-sticky-cta {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 15px;
+  background-color: $white;
+  box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.05);
+  z-index: 99;
+  display: block;
+
+  .btn-full-width {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding-block: 16px;
+    font-size: 1.1rem;
+    font-weight: 700;
+  }
+
+  @include laptop-up {
+    display: none; /* Hide on desktop, they use the navbar button */
+  }
 }

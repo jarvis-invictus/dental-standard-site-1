@@ -21,12 +21,17 @@
 }
 
 .service-list {
-  @include grid-list;
-  gap: 15px;
+  display: grid;
+  gap: 30px;
+  align-items: stretch;
+
+  > li {
+    display: flex;
+    height: auto;
+  }
 
   @include tablet-up {
     grid-template-columns: 1fr 1fr;
-    column-gap: 30px;
   }
 
   @include laptop-up {
@@ -39,6 +44,7 @@
   align-items: flex-start;
   gap: 30px;
   min-height: 100%;
+  width: 100%; /* Fill flex parent */
   border: 1px solid $light-gray;
   border-radius: $radius-4;
   padding: 30px;
